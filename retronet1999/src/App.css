@@ -1,0 +1,407 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-retro-neon-blue: #00ffff;
+  --color-retro-hot-pink: #ff00ff;
+  --color-retro-cyan: #0ff;
+  --color-retro-lime: var(--color-retro-lime);
+  --color-retro-bg: var(--color-retro-bg);
+  --color-retro-panel: var(--color-retro-panel);
+  --color-retro-text: var(--color-retro-text);
+  --color-retro-title: var(--color-retro-title);
+  --color-retro-dark-panel: #808080;
+  --color-retro-border-light: #ffffff;
+  --color-retro-border-dark: #808080;
+  --color-retro-border-darker: #404040;
+  
+  --font-pixel: 'Pixelify Sans', 'Press Start 2P', cursive;
+  --font-sans: 'Pixelify Sans', 'MS Sans Serif', sans-serif;
+}
+
+@layer base {
+  :root {
+    --theme-wallpaper: radial-gradient(circle at 20% 15%, rgba(255,255,255,.12), transparent 24%), linear-gradient(135deg, #007c7c, #004f6b 58%, #022b40);
+    --theme-accent: #00ffff;
+    --theme-accent-2: #ffcc00;
+    --theme-glow: rgba(0, 255, 255, .28);
+    --theme-grid: rgba(255,255,255,.11);
+    --theme-taskbar: linear-gradient(180deg, #d8d8d8, #a8a8a8);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-retro-bg);
+    color: var(--color-retro-lime);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    overflow: hidden; /* Global app window should not scroll, handle scrolling in child components */
+    cursor: var(--theme-cursor, auto);
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    font-family: var(--font-sans) !important;
+  }
+
+  button, a, [role="button"], .cursor-pointer {
+    cursor: var(--theme-cursor-pointer, pointer) !important;
+  }
+}
+
+.desktop-ambient {
+  background:
+    linear-gradient(var(--theme-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--theme-grid) 1px, transparent 1px),
+    radial-gradient(circle at 15% 20%, var(--theme-glow), transparent 24%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--theme-accent-2) 35%, transparent), transparent 24%);
+  background-size: 42px 42px, 42px 42px, 100% 100%, 100% 100%;
+  opacity: .78;
+}
+
+.desktop-ambient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.1), transparent 20%, rgba(0,0,0,.22));
+}
+
+.desktop-brand {
+  text-shadow: 0 2px 0 rgba(0,0,0,.5), 0 0 18px var(--theme-glow);
+}
+
+.desktop-icon {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.25));
+}
+
+.desktop-icon:hover {
+  background: color-mix(in srgb, var(--theme-accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--theme-accent) 48%, white);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), 0 0 18px var(--theme-glow);
+}
+
+.desktop-icon-glyph svg,
+.desktop-icon-glyph div {
+  filter: drop-shadow(1px 2px 0 rgba(0,0,0,.55)) drop-shadow(0 0 8px var(--theme-glow));
+}
+
+.desktop-icon-label {
+  text-shadow: 1px 1px 0 #000, 0 0 7px rgba(0,0,0,.8);
+  line-height: 1.05;
+}
+
+.boot-screen {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(34,197,94,.18), transparent 25%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 4px),
+    #020403;
+}
+
+.fixed.inset-0.p-4,
+.taskbar-shell,
+.start-menu,
+.app-window {
+  filter: blur(var(--crt-content-blur, 0px));
+}
+
+/* CRT Effects and retro classes */
+.crt-stack,
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.crt-stack {
+  z-index: 99990;
+  overflow: hidden;
+}
+
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.72) 50%
+  );
+  background-size: 100% 3px;
+  animation: scanlines 8s linear infinite;
+  opacity: var(--crt-scanline-opacity);
+  mix-blend-mode: multiply;
+}
+
+.crt-flicker {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.12), transparent 42%),
+    rgba(255, 255, 255, 0.08);
+  animation: crt-flicker 0.12s infinite steps(2);
+  opacity: var(--crt-flicker-opacity);
+  mix-blend-mode: screen;
+}
+
+.crt-vhs {
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  opacity: var(--crt-vhs-opacity);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,0,0,.13) 19px, transparent 20px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.18) 0 1px, transparent 1px 7px);
+  animation: vhs-drift 1.2s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.crt-glass {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 52%, rgba(0,0,0,.32) 100%),
+    linear-gradient(90deg, rgba(255,0,0,.04), rgba(0,255,255,.04));
+  box-shadow: inset 0 0 72px rgba(0,0,0,.45), inset 0 0 26px var(--theme-glow);
+  opacity: calc(.38 + (var(--crt-bloom-opacity) * .2));
+}
+
+.refresh-rate-overlay {
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.7), transparent 48%, rgba(255,255,255,.25) 50%, transparent 52%, rgba(0,0,0,.7)),
+    rgba(0,0,0,.35);
+  mix-blend-mode: multiply;
+  animation-name: refresh-sweep;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.05; }
+  100% { opacity: 0.1; }
+}
+
+@keyframes crt-flicker {
+  0% { opacity: calc(var(--crt-flicker-opacity) * .55); transform: translateX(0); }
+  50% { opacity: var(--crt-flicker-opacity); transform: translateX(.6px); }
+  100% { opacity: calc(var(--crt-flicker-opacity) * .7); transform: translateX(-.4px); }
+}
+
+@keyframes vhs-drift {
+  0% { transform: translate3d(-2%, -1%, 0); }
+  50% { transform: translate3d(2%, 1%, 0); }
+  100% { transform: translate3d(-2%, -1%, 0); }
+}
+
+@keyframes refresh-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 400px; }
+}
+
+@keyframes degauss {
+  0% { transform: scale(1) translate(0); }
+  5% { transform: scale(1.05) translate(10px, -5px); filter: hue-rotate(90deg); }
+  10% { transform: scale(0.95) translate(-10px, 5px); filter: hue-rotate(180deg); }
+  15% { transform: scale(1.02) translate(5px, 10px); filter: hue-rotate(270deg); }
+  20% { transform: scale(0.98) translate(-5px, -10px); filter: hue-rotate(0deg); }
+  30% { transform: scale(1) translate(0); }
+}
+
+.animate-degauss {
+  animation: degauss 0.4s ease-in-out 3;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes slow-load-reveal {
+  0% { clip-path: inset(0 0 100% 0); }
+  100% { clip-path: inset(0 0 0% 0); }
+}
+
+.slow-load-img {
+  animation: slow-load-reveal 6s steps(40, end) forwards;
+  background: #f0f0f0 repeating-linear-gradient(0deg, #ccc 0px, #ccc 1px, transparent 1px, transparent 3px);
+  background-size: 100% 3px;
+}
+
+.win95-window {
+  background: var(--color-retro-panel);
+  border-top: 2px solid var(--color-retro-border-light);
+  border-left: 2px solid var(--color-retro-border-light);
+  border-right: 2px solid var(--color-retro-border-darker);
+  border-bottom: 2px solid var(--color-retro-border-darker);
+  color: var(--color-retro-text);
+  box-shadow: inset -1px -1px var(--color-retro-border-dark),
+              inset 1px 1px var(--color-retro-border-light);
+}
+
+.app-window {
+  box-shadow:
+    inset -1px -1px var(--color-retro-border-dark),
+    inset 1px 1px var(--color-retro-border-light),
+    0 18px 35px rgba(0,0,0,.35);
+}
+
+.app-window-active {
+  box-shadow:
+    inset -1px -1px var(--color-retro-border-dark),
+    inset 1px 1px var(--color-retro-border-light),
+    0 0 0 1px color-mix(in srgb, var(--theme-accent) 60%, transparent),
+    0 22px 45px rgba(0,0,0,.46),
+    0 0 22px var(--theme-glow);
+}
+
+.win95-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: white;
+  padding: 2px 4px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.55);
+  border-bottom: 1px solid rgba(255,255,255,.22);
+}
+
+.window-control {
+  width: 22px;
+  height: 20px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #050505;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 1px rgba(255,255,255,.45);
+}
+
+.window-control span {
+  display: block;
+  transform: translateY(-1px);
+}
+
+.window-control-close:hover {
+  background: #e81123;
+  color: #fff;
+  text-shadow: none;
+}
+
+.window-content {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.95)),
+    var(--color-retro-panel);
+}
+
+.window-status {
+  background: color-mix(in srgb, var(--color-retro-panel) 92%, white);
+}
+
+.taskbar-shell {
+  background: var(--theme-taskbar);
+  box-shadow: inset 0 1px rgba(255,255,255,.9), 0 -4px 22px rgba(0,0,0,.25), 0 -1px 18px var(--theme-glow);
+}
+
+.start-button {
+  text-shadow: 0 1px rgba(255,255,255,.6);
+}
+
+.taskbar-app {
+  background: color-mix(in srgb, var(--color-retro-panel) 82%, var(--theme-accent) 18%);
+}
+
+.taskbar-ticker {
+  background: rgba(0,0,0,.15);
+  color: color-mix(in srgb, var(--theme-accent) 75%, #001144);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: inset 0 1px 5px rgba(0,0,0,.18);
+}
+
+.system-tray {
+  background: color-mix(in srgb, var(--color-retro-panel) 86%, white);
+}
+
+.start-menu {
+  box-shadow: 0 -14px 40px rgba(0,0,0,.36), 0 0 24px var(--theme-glow);
+}
+
+.start-menu-rail,
+.start-user {
+  background: var(--color-retro-title);
+}
+
+.start-menu-item {
+  border: 1px solid transparent;
+}
+
+.start-menu-item:hover {
+  color: white;
+  background: var(--color-retro-title);
+  border-color: rgba(255,255,255,.35);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+}
+
+.quick-launch .win95-button {
+  background: color-mix(in srgb, var(--color-retro-panel) 80%, white);
+}
+
+.theme-card {
+  min-height: 118px;
+}
+
+.theme-card-active {
+  border-color: var(--theme-accent);
+  background: color-mix(in srgb, var(--theme-accent) 14%, white);
+  box-shadow: 0 0 12px var(--theme-glow);
+}
+
+.win95-button {
+  background: var(--color-retro-panel);
+  border-top: 2px solid var(--color-retro-border-light);
+  border-left: 2px solid var(--color-retro-border-light);
+  border-right: 2px solid var(--color-retro-border-darker);
+  border-bottom: 2px solid var(--color-retro-border-darker);
+  box-shadow: inset -1px -1px var(--color-retro-border-dark),
+              inset 1px 1px var(--color-retro-border-light);
+  padding: 2px 6px;
+}
+
+.win95-button:active {
+  border-top: 2px solid var(--color-retro-border-darker);
+  border-left: 2px solid var(--color-retro-border-darker);
+  border-right: 2px solid var(--color-retro-border-light);
+  border-bottom: 2px solid var(--color-retro-border-light);
+  box-shadow: inset 1px 1px var(--color-retro-border-dark);
+}
+@keyframes fall {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.animate-fall {
+  animation: fall 5s linear infinite;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Sleep screen cursor hide */
+.cursor-none { cursor: none; }
