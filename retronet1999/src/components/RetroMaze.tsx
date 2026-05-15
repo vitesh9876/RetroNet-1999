@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Window from './Window';
-import { Gamepad2, Move, RotateCcw } from 'lucide-react';
+import { Gamepad2 } from 'lucide-react';
 
-const MAP_SIZE = 12;
+// const MAP_SIZE = 12;
 const MAP = [
   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],

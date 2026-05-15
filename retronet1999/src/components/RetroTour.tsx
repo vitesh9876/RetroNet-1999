@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Window from './Window';
-import { HelpCircle, Monitor, Shield, Layout, Zap, Coffee, ChevronRight, ChevronLeft, Play, Info } from 'lucide-react';
+import { HelpCircle, Monitor, Shield, Zap, Coffee, ChevronRight, ChevronLeft, Play, Info } from 'lucide-react';
 import { CommonWindowProps } from '../types';
 
 const tourSteps = [

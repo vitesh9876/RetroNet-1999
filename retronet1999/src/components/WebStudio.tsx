@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Window from './Window';
-import { Code, Layout, Palette, Save, Globe, Image as ImageIcon, Type } from 'lucide-react';
+import { Code, Layout, Palette, Save, Type } from 'lucide-react';
 import { useFileSystem } from '../contexts/FileSystemContext';
 import { useSystem } from '../contexts/SystemContext';
 

@@ -4,7 +4,7 @@ import { Database, Folder, FileText, ChevronRight, ChevronDown } from 'lucide-re
 import { CommonWindowProps } from '../types';
 
 const Regedit: React.FC<CommonWindowProps> = (props) => {
-  const [selectedPath, setSelectedPath] = useState('HKEY_LOCAL_MACHINE\\SOFTWARE\\RetroNet');
+  const [selectedPath, _setSelectedPath] = useState('HKEY_LOCAL_MACHINE\\SOFTWARE\\RetroNet');
   
   const regData = [
     { name: '(Default)', type: 'REG_SZ', value: '(value not set)' },

@@ -7,9 +7,9 @@ import { useSystem } from '../contexts/SystemContext';
 
 const SystemInfo: React.FC<CommonWindowProps> = (props) => {
   const { files } = useFileSystem();
-  const { theme, refreshRate, crt, missions, easterEggsFound, currentUser } = useSystem();
+  const { theme, refreshRate, crt, missions, easterEggsFound } = useSystem();
   const [tick, setTick] = useState(0);
-  const [activeTab, setActiveTab] = useState<'resources' | 'system' | 'missions'>('resources');
+  const [activeTab, setActiveTab] = useState<'resources' | 'system' | 'missions' | 'credits'>('resources');
 
   useEffect(() => {
     const timer = window.setInterval(() => setTick(value => value + 1), 1000);

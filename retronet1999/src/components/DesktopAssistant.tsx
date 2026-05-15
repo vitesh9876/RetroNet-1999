@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Info, AlertCircle, HelpCircle } from 'lucide-react';
-import { useSystem } from '../contexts/SystemContext';
+import { MessageSquare, X, HelpCircle } from 'lucide-react';
+
 
 const DesktopAssistant: React.FC = () => {
-  const { missions, isAdminMode } = useSystem();
+  // const { missions, isAdminMode } = useSystem();
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState('');
-  const [lastMessageTime, setLastMessageTime] = useState(0);
+  // const [lastMessageTime, setLastMessageTime] = useState(0);
 
   const tips = [
     "It looks like you're trying to find the admin password. Have you checked the README.txt file?",

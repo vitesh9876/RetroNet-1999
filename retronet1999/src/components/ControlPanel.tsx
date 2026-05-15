@@ -9,7 +9,7 @@ interface ControlPanelProps extends CommonWindowProps {
 }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({ onStartScreensaver, ...props }) => {
-  const { theme, setTheme, crt, updateCRT, refreshRate, setRefreshRate, wallpaper, setWallpaper, systemTime, timeZone, setTimeZone, soundEnabled, setSoundEnabled, volume, setVolume, currentUser, users, missions, isAdminMode, easterEggsFound, wallpaperSlideshow, setWallpaperSlideshow, slideshowInterval, setSlideshowInterval, tray, updateTray, triggerDegauss, degaussing, activeDesktopUrl, setActiveDesktopUrl } = useSystem();
+  const { theme, setTheme, crt, updateCRT, refreshRate, setRefreshRate, wallpaper, setWallpaper, systemTime, timeZone, setTimeZone, soundEnabled, setSoundEnabled, volume, setVolume, currentUser, users, missions, isAdminMode, easterEggsFound, wallpaperSlideshow, setWallpaperSlideshow, slideshowInterval, setSlideshowInterval, tray, updateTray, triggerDegauss, degaussing, activeDesktopUrl, setActiveDesktopUrl, slowNetwork, setSlowNetwork } = useSystem();
   const [activeTab, setActiveTab] = useState<'display' | 'crt' | 'theme' | 'screensaver' | 'sound' | 'datetime' | 'users' | 'network' | 'accessibility'>('display');
 
   const themes: { id: SystemTheme; name: string; preview: string; accent: string; description: string }[] = [

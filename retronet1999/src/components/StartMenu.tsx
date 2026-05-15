@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, Mail, Folder, Music, Terminal, Settings, Power, User, Palette, FileText, Calculator, MonitorCog, Grid3X3, Play, Shield, Disc, RotateCw, LogOut, MessageSquare, HardDrive, Database, Gamepad2, PlayCircle, Code, HelpCircle } from 'lucide-react';
+import { Globe, Mail, Folder, Music, Terminal, Settings, Power, User, Palette, FileText, Calculator, MonitorCog, Play, Shield, RotateCw, LogOut, MessageSquare, HardDrive, Database, Gamepad2, PlayCircle, Code, HelpCircle } from 'lucide-react';
 import { useSystem } from '../contexts/SystemContext';
 
 interface StartMenuProps {

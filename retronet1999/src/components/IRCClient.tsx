@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Window from './Window';
-import { MessageSquare, Users, Hash, Send, Settings, User } from 'lucide-react';
+import { MessageSquare, Users } from 'lucide-react';
 import { CommonWindowProps } from '../types';
 
 interface Message {
@@ -18,7 +18,7 @@ const IRCClient: React.FC<CommonWindowProps> = (props) => {
     { user: 'NapsterLover', text: 'I just downloaded the new Metallica song!', time: '18:53', type: 'msg' },
   ]);
   const [input, setInput] = useState('');
-  const [channel, setChannel] = useState('#retrochat');
+  const [channel, _setChannel] = useState('#retrochat');
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

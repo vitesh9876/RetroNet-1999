@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Window from './Window';
-import { HardDrive, Play, Square, RefreshCcw, CheckCircle2 } from 'lucide-react';
+import { HardDrive, Play, RefreshCcw, CheckCircle2 } from 'lucide-react';
 import { CommonWindowProps } from '../types';
 
 const Defrag: React.FC<CommonWindowProps> = (props) => {
   const [grid, setGrid] = useState<string[]>([]);
   const [isDefragging, setIsDefragging] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [stats, setStats] = useState({ clusters: 1024, fragmented: 12.4, free: 35.1 });
+  const [, setStats] = useState({ clusters: 1024, fragmented: 12.4, free: 35.1 });
 
   // Initialize grid with random data types
   useEffect(() => {
